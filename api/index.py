@@ -25,7 +25,7 @@ def predict():
     input_df = pd.DataFrame([input_data])  # Convert to DataFrame
 
     try:
-        # Ensure all inputs match the model's expected data types
+        # Ensure input matches the model's expected data types
         prediction = model.predict(input_df)
         response = {'prediction': prediction.tolist()}
     except ValueError as e:
@@ -34,7 +34,3 @@ def predict():
         response = {'error': 'Prediction error: ' + str(e)}
     
     return jsonify(response)
-
-if __name__ == '__main__':
-    # Use debug mode for local testing only
-    app.run(debug=True, host='0.0.0.0', port=5001)
