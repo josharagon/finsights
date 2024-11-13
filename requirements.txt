@@ -1,7 +1,5 @@
-flask                # For running the server and handling requests
-joblib               # For loading and saving the trained model
-numpy>=1.26.0        # For numerical operations
-pandas==2.0.3        # For data manipulation
-python-dotenv        # For loading environment variables
-requests             # For making API requests
-scikit-learn>=1.5.0  # For machine learning model training and prediction
+flask==3.0.0               # For running the server and handling requests
+joblib==1.3.0              # For loading pre-trained models
+pandas==2.0.3              # For data manipulation
+python-dotenv==1.0.0       # Optional, for environment variables
+requests==2.31.0           # Required for making API requests
