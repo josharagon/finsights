@@ -3,10 +3,10 @@ import json
 
 def handler(event, context):
     client = quiver()
-    
-    # Get the query parameters
+
+    # Get query parameters
     query = event.get('queryStringParameters', {})
-    endpoint = query.get('endpoint', 'congress')  # Default to 'congress'
+    endpoint = query.get('endpoint', 'congress')  # Default to congress trading
 
     # Route based on query parameter
     if endpoint == 'congress':
@@ -21,7 +21,7 @@ def handler(event, context):
             'body': json.dumps({'error': 'Invalid endpoint'})
         }
 
-    # Return data as JSON
+    # Return JSON data
     return {
         'statusCode': 200,
         'body': df.to_json(orient='records')

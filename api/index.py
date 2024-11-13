@@ -1,10 +1,18 @@
-from http.server import BaseHTTPRequestHandler
+from trading import handler as trading_handler
+from sentiment import handler as sentiment_handler
+import json
 
-class handler(BaseHTTPRequestHandler):
+def handler(event, context):
+    query = event.get('queryStringParameters', {})
+    path = query.get('path', '')
 
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type','text/plain')
-        self.end_headers()
-        self.wfile.write('Hello, world!'.encode('utf-8'))
-        return
+    # Route requests based on 'path' query parameter
+    if path == 'trading':
+        return trading_handler(event, context)
+    elif path == 'sentiment':
+        return sentiment_handler(event, context)
+    else:
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'error': 'Invalid path'})
+        }

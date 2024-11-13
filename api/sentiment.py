@@ -3,10 +3,10 @@ import json
 
 def handler(event, context):
     client = quiver()
-    
-    # Get the query parameters
+
+    # Get query parameters
     query = event.get('queryStringParameters', {})
-    endpoint = query.get('endpoint', 'wallstreetbets')  # Default to 'wallstreetbets'
+    endpoint = query.get('endpoint', 'wallstreetbets')  # Default to WallStreetBets
 
     if endpoint == 'wallstreetbets':
         df = client.wallstreetbets()
